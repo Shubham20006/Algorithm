@@ -3,36 +3,56 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
-namespace Algorithm
+namespace ConsoleApp1
 {
-    public class PermutationOfString
+    public class SortingString
     {
-        public static void usingIterativeMethod(String str, int initialLength, int length)
+        string[] Arr = { "cat", "dog", "shubham", "god", "act", "Manish", "Ram", "Dhanashri", };
+        public void List()
         {
-            if (initialLength == length)
-                Console.WriteLine(str);
-            else
+            Console.WriteLine("Before Sorting List of word :");
+            Console.Write("[ ");
+            foreach (string str in Arr)
             {
-                for (int i = initialLength; i <= length; i++)
-                {
-                    str = swap(str, initialLength, i);
-                    usingIterativeMethod(str, initialLength + 1, length);
-                    str = swap(str, initialLength, i);
-                }
+
+                Console.Write(str + ", ");
+
             }
+            Console.WriteLine("]");
+            Console.WriteLine();
+            Array.Sort(Arr);
+            Console.WriteLine("\nAfter sorting List of word :");
+            Console.Write("[ ");
+            foreach (string str in Arr)
+            {
+
+                Console.Write(str + " ");
+
+            }
+            Console.WriteLine("]");
+            Console.WriteLine();
         }
-        public static String swap(String a, int i, int j)
+        public void Searching(string W)
         {
-            char temp;
-            char[] charArray = a.ToCharArray();
-            temp = charArray[i];
-            charArray[i] = charArray[j];
-            charArray[j] = temp;
-            string s = new string(charArray);
-            return s;
+            int c = 0;
+            foreach (string str in Arr)
+            {
+                if (W == str)
+                {
+                    Console.WriteLine("\nWord Found  " + W + "==" + str);
+                    Console.WriteLine("\nPosition of Word in index : " + (Array.BinarySearch(Arr, W) - 1));
+                    c = 1;
+                }
+
+            }
+            if (c == 0)
+            {
+                Console.WriteLine("\nWord Not Found");
+            }
+
+
         }
-
     }
-
 }
