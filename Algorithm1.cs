@@ -1,33 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Algorithm
 {
-    public class Anagram
+    public class Prime
     {
-        public  void DisplayAnagram()
+
+        List<int> Arp = new List<int>();
+        List<int> Anp = new List<int>();
+
+
+
+        public int j, x, k, val, flag = 0;
+        public void prime(int start, int end)
         {
-            string str1 = "heart";
-            string str2 = "earth";
-
-            char[] ch1 = str1.ToLower().ToCharArray();
-            char[] ch2 = str2.ToLower().ToCharArray();
-            Array.Sort(ch1);
-            Array.Sort(ch2);
-
-            string val1 = new string(ch1);
-            string val2 = new string(ch2);
-
-            if (val1 == val2)
+            for (k = start; k <= end; k++)
             {
-                Console.WriteLine("String is Anagram");
-            }
-            else
-            {
-                Console.WriteLine("Not Anagram");
+                if (k == 1 || k == 0)
+                    continue;
+
+                int count = 0;
+                for (j = 2; j <= k / 2; j++)
+                {
+                    if (k % j == 0)
+                    {
+                        count = 1;
+                        break;
+
+                    }
+                }
+
+                if (count == 0)
+                {
+                    Console.WriteLine(k);
+                    Arp.Add(k);
+                }
+
+
             }
         }
     }

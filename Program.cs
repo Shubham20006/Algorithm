@@ -6,8 +6,8 @@
         {
 
 
-            Anagram A = new Anagram();
-            A.DisplayAnagram();
+            Prime P = new Prime();
+            P.prime(2, 1000);
 
         }
 
