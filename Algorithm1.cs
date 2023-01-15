@@ -1,97 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
 
 namespace Algorithm
 {
-    public class Prime
-    {
-
-        List<int> Arp = new List<int>();
-        List<int> Anp = new List<int>();
-
-
-
-        public int j, x, k, val, flag = 0;
-        public void prime(int start, int end)
+    public class GuessGame
+    {     
+        public void GuessGameDemo(int num)
         {
-            for (k = start; k <= end; k++)
+            int power = Check.IsPowerOfTwo(num);
+            if (power == 0)
             {
-                if (k == 1 || k == 0)
-                    continue;
-
-                int count = 0;
-                for (j = 2; j <= k / 2; j++)
+                Console.WriteLine(" number is not a power of 2");
+            }
+            else
+            {
+                
+                int i, low = 0, high = num, mid;
+                int[] array = new int[num];
+                for (i = 0; i < num; i++)
                 {
-                    if (k % j == 0)
+                    array[i] = i;
+                }
+
+                Console.WriteLine("Guess a number in your mind in range 0 to {0} press enter once guessed", num - 1);
+               
+                Console.ReadLine();
+               
+                while (power > 0)
+                {
+                    mid = (low + high) / 2;
+                    Console.WriteLine("Is the number {0} true or false", array[mid]);
+                    if (Check.IsBoolean(Console.ReadLine()))
                     {
-                        count = 1;
-                        break;
-
+                        Console.WriteLine("Yeah we won");
+                        return;
                     }
-                }
 
-                if (count == 0)
-                {
-                    Console.WriteLine(k);
-                    Arp.Add(k);
-                }
-
-
-            }
-        }
-        public void checkpal()
-        {
-            Console.WriteLine("Palindrome prime numbers are ");
-            foreach (int d in Arp)
-            {
-                int c = d; ;
-                int rev = 0;
-                for (int e = 0; e != d; e++)
-                {
-
-                    int C = (c % 10);
-
-                    rev = (rev * 10) + C;
-                    c = (c / 10);
-                    if (rev == d)
+                    Console.WriteLine("Is the number less than {0} true or false", array[mid]);
+                    if (Check.IsBoolean(Console.ReadLine()))
                     {
-                        Anp.Add(rev);
-                        Console.WriteLine(rev);
+                        high = mid;
                     }
-                }
-            }
-        }
-        public void checkAnagram()
-        {
-            foreach (int f in Anp)
-            {
-                for (int i = 1; i < Anp.Count; i++)
-                {
-                    val = Anp[i];
-                    for (j = i - 1; j >= 0 && flag != 1;)
+                    else
                     {
-                        if (val == Anp[j])
-                        {
-                            Console.WriteLine("anagram number " + j);
-                        }
-                        else
-                        {
-                            flag = 1;
-                        }
+                        low = mid + 1;
                     }
+
+                    power--;
                 }
             }
-            if (flag == 1)
-            {
-                Console.WriteLine("anagram number not present in prime palindrome list");
-            }
-
-
         }
     }
 }
