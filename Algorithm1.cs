@@ -3,53 +3,47 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Transactions;
 
-namespace ConsoleApp1
+namespace SortingTechniques
 {
-    public class SortingString
+    internal class InsertionSort
     {
-        string[] Arr = { "cat", "dog", "shubham", "god", "act", "Manish", "Ram", "Dhanashri", };
-        public void List()
+        public static void DisplayInsertionSort()
         {
-            Console.WriteLine("Before Sorting List of word :");
-            Console.Write("[ ");
-            foreach (string str in Arr)
+            int[] arr = new int[] { 23, 9, 85, 12, 99 };
+            int n = 5, i, j, val, flag;
+            Console.WriteLine("Insertion Sorting: ");
+            Console.WriteLine("Initial Array: ");
+            for (i = 0; i < n; i++)
             {
-
-                Console.Write(str + ", ");
-
+                Console.WriteLine(arr[i]);
             }
-            Console.WriteLine("]");
-            Console.WriteLine();
-            Array.Sort(Arr);
-            Console.WriteLine("\nAfter sorting List of word :");
-            Console.Write("[ ");
-            foreach (string str in Arr)
-            {
 
-                Console.Write(str + " ");
-
-            }
-            Console.WriteLine("]");
-            Console.WriteLine();
-        }
-        public void Searching(string W)
-        {
-            int c = 0;
-            foreach (string str in Arr)
+            for (i = 1; i < n; i++)
             {
-                if (W == str)
+                val = arr[i];
+                flag = 0;
+                for (j = i - 1; j >= 0 && flag != 1;)
                 {
-                    Console.WriteLine("\nWord Found  " + W + "==" + str);
-                    Console.WriteLine("\nPosition of Word in index : " + (Array.BinarySearch(Arr, W) - 1));
-                    c = 1;
+                    if (val < arr[j])
+                    {
+                        arr[j + 1] = arr[j];
+                        j--;
+                        arr[j + 1] = val;
+                    }
+                    else
+                    {
+                        flag = 1;
+                    }
+                }
+                Console.WriteLine("Sorted Array: ");
+
+                for (i = 0; i < n; i++)
+                {
+                    Console.WriteLine(arr[i]);
                 }
 
-            }
-            if (c == 0)
-            {
-                Console.WriteLine("\nWord Not Found");
+
             }
 
 

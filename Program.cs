@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SortingTechniques;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,11 +14,7 @@ namespace ConsoleApp1
 
             {
 
-                SortingString d = new SortingString();
-                d.List();
-                Console.WriteLine("\nEnter word do you want to search : ");
-                string W = Console.ReadLine();
-                d.Searching(W);
+                InsertionSort.DisplayInsertionSort();
             }
         }
     }
