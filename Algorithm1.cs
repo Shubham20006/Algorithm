@@ -1,42 +1,73 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SortingTechniques
 {
-    internal class BubbleSort
+    public class MergeSort
     {
-        public static void DisplayBubbleSort()
+        void merge(int[] arr, int l, int m, int r)
         {
-            int[] arr = { 78, 55, 45, 98, 13 };
-            Console.WriteLine("Before sorted");
-            foreach (int p in arr)
+            int n1 = m - l + 1;
+            int n2 = r - m;
+            int[] L = new int[n1];
+            int[] R = new int[n2];
+            int i, j;
+
+            for (i = 0; i < n1; ++i)
+                L[i] = arr[l + i];
+            for (j = 0; j < n2; ++j)
+                R[j] = arr[m + 1 + j];
+
+            i = 0;
+            j = 0;
+
+            int k = l;
+            while (i < n1 && j < n2)
             {
-                Console.WriteLine(p);
-            }
-            int temp;
-            for (int j = 0; j <= arr.Length - 2; j++)
-            {
-                for (int i = 0; i <= arr.Length - 2; i++)
+                if (L[i] <= R[j])
                 {
-                    if (arr[i] > arr[i + 1])
-                    {
-                        temp = arr[i + 1];
-                        arr[i + 1] = arr[i];
-                        arr[i] = temp;
-                    }
+                    arr[k] = L[i];
+                    i++;
                 }
+                else
+                {
+                    arr[k] = R[j];
+                    j++;
+                }
+                k++;
             }
-
-            Console.WriteLine("Sorted:");
-
-            foreach (int p in arr)
+            while (i < n1)
             {
-                Console.WriteLine(p);
+                arr[k] = L[i];
+                i++;
+                k++;
             }
+            while (j < n2)
+            {
+                arr[k] = R[j];
+                j++;
+                k++;
+            }
+        }
+        public void sort(int[] arr, int l, int r)
+        {
+            if (l < r)
+            {
+                int m = l + (r - l) / 2;
+                sort(arr, l, m);
+                sort(arr, m + 1, r);
+                merge(arr, l, m, r);
+            }
+        }
+        public static void printArray(int[] arr)
+        {
+            int n = arr.Length;
+            for (int i = 0; i < n; ++i)
+                Console.Write(arr[i] + " ");
+            Console.WriteLine();
         }
     }
 }
