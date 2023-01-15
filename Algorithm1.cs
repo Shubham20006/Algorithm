@@ -44,5 +44,54 @@ namespace Algorithm
 
             }
         }
+        public void checkpal()
+        {
+            Console.WriteLine("Palindrome prime numbers are ");
+            foreach (int d in Arp)
+            {
+                int c = d; ;
+                int rev = 0;
+                for (int e = 0; e != d; e++)
+                {
+
+                    int C = (c % 10);
+
+                    rev = (rev * 10) + C;
+                    c = (c / 10);
+                    if (rev == d)
+                    {
+                        Anp.Add(rev);
+                        Console.WriteLine(rev);
+                    }
+                }
+            }
+        }
+        public void checkAnagram()
+        {
+            foreach (int f in Anp)
+            {
+                for (int i = 1; i < Anp.Count; i++)
+                {
+                    val = Anp[i];
+                    for (j = i - 1; j >= 0 && flag != 1;)
+                    {
+                        if (val == Anp[j])
+                        {
+                            Console.WriteLine("anagram number " + j);
+                        }
+                        else
+                        {
+                            flag = 1;
+                        }
+                    }
+                }
+            }
+            if (flag == 1)
+            {
+                Console.WriteLine("anagram number not present in prime palindrome list");
+            }
+
+
+        }
     }
 }

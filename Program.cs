@@ -8,6 +8,9 @@
 
             Prime P = new Prime();
             P.prime(2, 1000);
+            P.checkpal();
+            P.checkAnagram();
+
 
         }
 
