@@ -4,70 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SortingTechniques
+namespace Algorithm
 {
-    public class MergeSort
+    public class Anagram
     {
-        void merge(int[] arr, int l, int m, int r)
+        public  void DisplayAnagram()
         {
-            int n1 = m - l + 1;
-            int n2 = r - m;
-            int[] L = new int[n1];
-            int[] R = new int[n2];
-            int i, j;
+            string str1 = "heart";
+            string str2 = "earth";
 
-            for (i = 0; i < n1; ++i)
-                L[i] = arr[l + i];
-            for (j = 0; j < n2; ++j)
-                R[j] = arr[m + 1 + j];
+            char[] ch1 = str1.ToLower().ToCharArray();
+            char[] ch2 = str2.ToLower().ToCharArray();
+            Array.Sort(ch1);
+            Array.Sort(ch2);
 
-            i = 0;
-            j = 0;
+            string val1 = new string(ch1);
+            string val2 = new string(ch2);
 
-            int k = l;
-            while (i < n1 && j < n2)
+            if (val1 == val2)
             {
-                if (L[i] <= R[j])
-                {
-                    arr[k] = L[i];
-                    i++;
-                }
-                else
-                {
-                    arr[k] = R[j];
-                    j++;
-                }
-                k++;
+                Console.WriteLine("String is Anagram");
             }
-            while (i < n1)
+            else
             {
-                arr[k] = L[i];
-                i++;
-                k++;
+                Console.WriteLine("Not Anagram");
             }
-            while (j < n2)
-            {
-                arr[k] = R[j];
-                j++;
-                k++;
-            }
-        }
-        public void sort(int[] arr, int l, int r)
-        {
-            if (l < r)
-            {
-                int m = l + (r - l) / 2;
-                sort(arr, l, m);
-                sort(arr, m + 1, r);
-                merge(arr, l, m, r);
-            }
-        }
-        public static void printArray(int[] arr)
-        {
-            int n = arr.Length;
-            for (int i = 0; i < n; ++i)
-                Console.Write(arr[i] + " ");
-            Console.WriteLine();
         }
     }
 }
