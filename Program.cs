@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,18 @@ namespace Algorithm
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Algorithm programs");
+            Console.Write("*****Permulation by using Iterative method*****");
+            String str = "DOG";
+            int n = str.Length;
+            Console.Write("\nAll possible strings are : \n");
+            PermutationOfString.usingIterativeMethod(str, 0, n - 1);
+
+            Console.Write("*****Permulation by using Recursion*****");
+            String s = "ABC";
+            String answer = "";
+
+            Console.WriteLine("\nAll possible strings are : ");
+            PermutationOfStringUsingRecursiveApproach.RecursiveApproach(s, answer);
         }
     }
 }
