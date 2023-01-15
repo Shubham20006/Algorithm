@@ -14,7 +14,7 @@ namespace ConsoleApp1
 
             {
 
-                InsertionSort.DisplayInsertionSort();
+                BubbleSort.DisplayBubbleSort();
             }
         }
     }

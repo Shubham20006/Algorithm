@@ -1,52 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SortingTechniques
 {
-    internal class InsertionSort
+    internal class BubbleSort
     {
-        public static void DisplayInsertionSort()
+        public static void DisplayBubbleSort()
         {
-            int[] arr = new int[] { 23, 9, 85, 12, 99 };
-            int n = 5, i, j, val, flag;
-            Console.WriteLine("Insertion Sorting: ");
-            Console.WriteLine("Initial Array: ");
-            for (i = 0; i < n; i++)
+            int[] arr = { 78, 55, 45, 98, 13 };
+            Console.WriteLine("Before sorted");
+            foreach (int p in arr)
             {
-                Console.WriteLine(arr[i]);
+                Console.WriteLine(p);
             }
-
-            for (i = 1; i < n; i++)
+            int temp;
+            for (int j = 0; j <= arr.Length - 2; j++)
             {
-                val = arr[i];
-                flag = 0;
-                for (j = i - 1; j >= 0 && flag != 1;)
+                for (int i = 0; i <= arr.Length - 2; i++)
                 {
-                    if (val < arr[j])
+                    if (arr[i] > arr[i + 1])
                     {
-                        arr[j + 1] = arr[j];
-                        j--;
-                        arr[j + 1] = val;
-                    }
-                    else
-                    {
-                        flag = 1;
+                        temp = arr[i + 1];
+                        arr[i + 1] = arr[i];
+                        arr[i] = temp;
                     }
                 }
-                Console.WriteLine("Sorted Array: ");
-
-                for (i = 0; i < n; i++)
-                {
-                    Console.WriteLine(arr[i]);
-                }
-
-
             }
 
+            Console.WriteLine("Sorted:");
 
+            foreach (int p in arr)
+            {
+                Console.WriteLine(p);
+            }
         }
     }
 }
